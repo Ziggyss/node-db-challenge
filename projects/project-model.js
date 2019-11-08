@@ -3,7 +3,7 @@ const db = require("../data/db-config");
 module.exports = {
   getProjects,
 //   addProject,
-//   getTasks,
+  getTasks,
 //   addTask,
   getResources,
 //   addResource
@@ -17,9 +17,10 @@ function getResources(){
   return db("resources")
 }
 
-// function getTasks(){
-
-//}
+function getTasks(project_id){
+    return db("tasks")
+    .where({project_id})
+}
 
 
 // function getShoppingList(id) {

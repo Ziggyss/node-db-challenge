@@ -4,6 +4,31 @@ const Projects = require("./project-model");
 
 const router = express.Router();
 
+router.get("/resources", (req, res) => {
+  Projects.getResources()
+    .then(resources => {
+      res.json(resources);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ message: "Failed to get the resources: " + err.message });
+    });
+});
+
+// router.get("/resources", (req, res) => {
+// //   res.send("it works now");
+//   Projects.getResources()
+//     .then(resources => {
+//       res.json(resources);
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ message: "Failed to get the resources: " + err.message });
+//     });
+// });
+
 router.get("/", (req, res) => {
   Projects.getProjects()
     .then(projects => {
@@ -30,17 +55,18 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.get("/resources", (req, res) => {
-    Projects.getResources()
-      .then(resources => {
-        res.json(resources);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ message: "Failed to get the resources: " + err.message });
-      });
-});
+// router.get("/resources", (req, res) => {
+//     res.send("it works now")
+//     // Projects.getResources()
+//   .then(resources => {
+//     res.json(resources);
+//   })
+//   .catch(err => {
+//     res
+//       .status(500)
+//       .json({ message: "Failed to get the resources: " + err.message });
+//   });
+// });
 
 router.get("/:id/tasks", (req, res) => {
   const { id } = req.params;

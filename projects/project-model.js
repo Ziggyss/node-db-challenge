@@ -34,7 +34,11 @@ function getResourcesByProject(id){
 }
 
 function getTasks(project_id) {
-  return db("tasks").where({ project_id });
+  return db("tasks")
+  .join("projects", "tasks.project_id", "projects.id")
+  .select("tasks.task_description", "projects.project_name", "tasks.complete")
+  .where({ project_id });
+  
 }
 
 function addProject(project) {

@@ -17,7 +17,21 @@ router.get("/", (req, res) => {
       res.json(updatedProjects);
     })
     .catch(err => {
-      res.status(500).json({ message: "Failed to get any projects" });
+      res
+        .status(500)
+        .json({ message: "Failed to get any projects: " + err.message });
+    });
+});
+
+router.get("/resources", (req, res) => {
+  Projects.getResources()
+    .then(resources => {
+      res.json(resources);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ message: "Failed to get the resources: " + err.message });
     });
 });
 

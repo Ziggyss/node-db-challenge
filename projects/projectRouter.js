@@ -31,15 +31,15 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/resources", (req, res) => {
-  Projects.getResources()
-    .then(resources => {
-      res.json(resources);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ message: "Failed to get the resources: " + err.message });
-    });
+    Projects.getResources()
+      .then(resources => {
+        res.json(resources);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ message: "Failed to get the resources: " + err.message });
+      });
 });
 
 router.get("/:id/tasks", (req, res) => {
@@ -48,9 +48,9 @@ router.get("/:id/tasks", (req, res) => {
     .then(tasks => {
       const updatedTasks = tasks.map(task => {
         if (task.complete) {
-          return { ...project, complete: true };
+          return { ...tasks, complete: true };
         } else {
-          return { ...project, complete: false };
+          return { ...tasks, complete: false };
         }
       });
       res.status(200).json(updatedTasks);

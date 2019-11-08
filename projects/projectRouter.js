@@ -17,7 +17,6 @@ router.get("/resources", (req, res) => {
 });
 
 // router.get("/resources", (req, res) => {
-// //   res.send("it works now");
 //   Projects.getResources()
 //     .then(resources => {
 //       res.json(resources);
@@ -74,9 +73,9 @@ router.get("/:id/tasks", (req, res) => {
     .then(tasks => {
       const updatedTasks = tasks.map(task => {
         if (task.complete) {
-          return { ...tasks, complete: true };
+          return { ...task, complete: true };
         } else {
-          return { ...tasks, complete: false };
+          return { ...task, complete: false };
         }
       });
       res.status(200).json(updatedTasks);

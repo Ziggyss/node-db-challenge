@@ -2,16 +2,16 @@ const db = require("../data/db-config");
 
 module.exports = {
   getProjects,
-  addProject,
-  getTasks,
-  addTask,
-  getResources,
-  addResource
+//   addProject,
+//   getTasks,
+//   addTask,
+//   getResources,
+//   addResource
 };
 
-// function getProjects() {
-//   return db("projects");
-// }
+function getProjects() {
+  return db("projects");
+}
 
 // function getResources(){
 //   return db("resources")

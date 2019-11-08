@@ -29,7 +29,7 @@ function getResourcesByProject(id){
     return db("projects as p")
     .join("project_resources as pr", "p.id", "pr.project_id")
     .join("resources as r", "r.id", "pr.resource_id")
-    .select("p.name", "r.name", "r.description")
+    .select("p.project_name", "r.resource_name", "r.resource_description")
     .where("p.id", id)
 }
 
